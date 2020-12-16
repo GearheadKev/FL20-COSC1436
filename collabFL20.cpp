@@ -25,6 +25,7 @@ void menu6Dominguez();
 void menu22Turcios();
 void menu21Tourkakis();
 void menu8Fuentes();
+void menu18Souhala();
 
 // ***************************************************************
 // END OF FUNCTION PROTOTYPE AREA
@@ -94,6 +95,7 @@ int main()
             case 17:                 // Soepangat - call to function goes here
                 break;
             case 18:                 // Souhala - call to function goes here
+		menu18Souhala();
                 break;
             case 19:                 // Sundance - call to function goes here
                 break;
@@ -416,4 +418,49 @@ void menu8Fuentes()
     area = (pow(sidesLength, 2) * sidesNum) / (4 * tan(PI / sidesNum));     // Formula to calculate area
                                                                             // of polygon
     cout << "The area of your polygon is " << area << " square units" << endl;
+}
+
+// *****************************************************************************************
+// MENU ID:          18
+// FUNCTION:         menu18Souhala
+// DESCRIPTION:      Takes a quantity and range of the user's choice and generates random
+//		     numbers based on that information.
+// OUTPUT EXAMPLE:   If the user wanted 10 random numbers between 1 and 100 they could
+//		     receive the following: 
+//		     7, 65, 34, 88, 90, 42, 86, 12, 71, 23
+//		     These random numbers will be printed with one per line.
+// *****************************************************************************************
+
+void menu18Souhala()
+{
+    unsigned seed = time(0);               // Used for the randomization
+    srand(seed);
+    int numberLine;						   // Assigns a line for each number
+    int quantity;						   // Stores the user-defined quantity of random numbers
+    int smallestNumber, greatestNumber;    // Stores the smallest and greatest numbers in the user-defined range respectively
+
+    cout << endl;
+    cout << "Welcome to Kevin Souhala's Random Number Generator! This program will create various random numbers" << endl;
+    cout << "based on a range and quantity of your choice." << endl << endl;
+
+    cout << "How many random numbers would you like?" << endl << endl;
+    cin >> quantity;
+    cout << endl;
+
+    cout << "Now you'll need a range. What is the smallest number in your range?" << endl << endl;
+    cin >> smallestNumber;
+    cout << endl;
+
+    cout << "What is the greatest number in your range?" << endl << endl;
+    cin >> greatestNumber;
+    cout << endl;
+
+    cout << "Thank you for using the Random Number Generator! Here are your random numbers:" << endl << endl;
+
+    // Generates random numbers based on the user's criteria, with one number per line
+    for (numberLine = 1; numberLine <= quantity; numberLine++)
+    {
+        cout << (rand() % (greatestNumber - smallestNumber + 1)) + smallestNumber << endl;
+    }
+    cout << endl;
 }
